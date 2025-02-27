@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working Of CryptGyard</title>
+    <link rel="stylesheet" href="/static/style2.css" />
+    <script defer type="text/javascript" src="/static/script2.js"></script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#working">Working</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li>
+          <button id="themeToggle">🌙 Dark Mode</button>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="about" class="section left">
+        <div class="typing-container">
+          <div id="typing-text"></div>
+          <i class="fa-solid fa-rocket"></i>
+        </div>
+        <div class="section-div">
+          <h1 class="section-heading">What is CryptGuard?</h1>
+          <p class="section-text">
+            CryptGuard is an advanced web-based tool designed to detect fraudulent
+            Bitcoin transactions with precision. By simply entering a Bitcoin
+            address, users can receive an instant prediction on whether the
+            transaction is suspicious or legitimate. CryptGuard leverages the
+            power of three robust machine learning models—Decision Tree
+            Classifier, Random Forest Classifier, and LightGBM—to analyze
+            transaction patterns and behaviors. The final verdict is determined
+            through a majority voting mechanism, ensuring reliable and data-driven
+            fraud detection.
+          </p>
+          <h2 class="section-text">Ready to put CryptGuard to the test?</h2>
+          <p class="section-text">
+            Hit 'Check Now' to see our AI in action—uncover fraud in just a few
+            clicks!
+          </p>
+          <!-- Prediction Button -->
+          <button id="predictionButton" class="prediction-btn">Check Now</button>
+        </div>
+      </section>
+  
+      <section id="working" class="section right">
+        <div class="section-div">
+          <h1 class="section-heading">🔍 How Does CryptGuard Work?</h1>
+          <p class="section-text">
+            Ever wondered how CryptGuard detects fraudulent Bitcoin transactions?  
+            It’s all about <strong>AI-powered precision</strong>! Simply enter a Bitcoin address, and CryptGuard 
+            will extract <strong>key transaction features</strong> from our dataset.  
+          </p>
+          <p class="section-text">
+            These values are then <strong>standardized</strong> and analyzed by three powerful machine learning models:  
+            <strong>Decision Tree Classifier, Random Forest Classifier, and LightGBM</strong>.  
+            Each model independently predicts whether the transaction is <strong>legitimate or fraudulent</strong>,  
+            and the final verdict is decided through <strong>majority voting</strong>, ensuring the most reliable results.
+          </p>
+          <p class="section-text">
+            Want to dive deeper with examples?  
+            <a href="{{ url_for('static', filename='index2.html') }}" target ="_blank" style="text-decoration: none; color: #0077b6; font-weight: bold;">
+              Click here to learn more! 🚀
+            </a>
+          </p>
+        </div>
+        
+        </div>
+        
+      </section>
+  
+      <section id="contact" class="section left">
+        <div class="section-div">
+          <h1 class="section-heading">📩 Get in Touch – We're Here to Help!</h1>
+    <p class="section-text">
+      Have questions about <strong>CryptGuard</strong> or need assistance?  
+      Whether you have <strong>inquiries, feedback, or suggestions</strong>,  
+      we’d love to hear from you! Our team is dedicated to ensuring a smooth experience.
+    </p>
+    <p class="section-text">
+      <strong>📧 Email Us:</strong>  
+      <a href="mailto:support@cryptguard.com" style="color: #0077b6; text-decoration: none;">
+        support@cryptguard.com
+      </a>
+    </p>
+          <p class="section-text">
+            We strive to respond as quickly as possible. Don't hesitate to reach out—we’d love to hear from you!
+          </p>
+        </div>
+        
+      </section>
+  
+
+    <!-- 3D Pyramid Container -->
+    <div class="pyramid-container"></div>
+    
+  </body>
+</html>

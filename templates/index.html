@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptGuard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#working">Working</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li>
+          <button id="themeToggle">🌙 Dark Mode</button>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="about" class="section left">
+      <div class="typing-container">
+        <div id="typing-text"></div>
+        <i class="fa-solid fa-rocket"></i>
+      </div>
+      <div class="section-div">
+        <h1 class="section-heading">What is CryptGuard?</h1>
+        <p class="section-text">
+          CryptGuard is an advanced web-based tool designed to detect fraudulent
+          Bitcoin transactions with precision. By simply entering a Bitcoin
+          address, users can receive an instant prediction on whether the
+          transaction is suspicious or legitimate. CryptGuard leverages the
+          power of three robust machine learning models—Decision Tree
+          Classifier, Random Forest Classifier, and LightGBM—to analyze
+          transaction patterns and behaviors. The final verdict is determined
+          through a majority voting mechanism, ensuring reliable and data-driven
+          fraud detection.
+        </p>
+        <h2 class="section-text">Ready to put CryptGuard to the test?</h2>
+        <p class="section-text">
+          Hit 'Check Now' to see our AI in action—uncover fraud in just a few
+          clicks!
+        </p>
+        <!-- Prediction Button -->
+        <button id="predictionButton" class="prediction-btn">Check Now</button>
+      </div>
+    </section>
+
+    <section id="working" class="section right">
+      <div class="section-div">
+        <h1 class="section-heading">🔍 How Does CryptGuard Work?</h1>
+        <p class="section-text">
+          Ever wondered how CryptGuard detects fraudulent Bitcoin transactions?  
+          It’s all about <strong>AI-powered precision</strong>! Simply enter a Bitcoin address, and CryptGuard 
+          will extract <strong>key transaction features</strong> from our dataset.  
+        </p>
+        <p class="section-text">
+          These values are then <strong>standardized</strong> and analyzed by three powerful machine learning models:  
+          <strong>Decision Tree Classifier, Random Forest Classifier, and LightGBM</strong>.  
+          Each model independently predicts whether the transaction is <strong>legitimate or fraudulent</strong>,  
+          and the final verdict is decided through <strong>majority voting</strong>, ensuring the most reliable results.
+        </p>
+        <p class="section-text">
+          Want to dive deeper with examples?  
+          <a href="{{ url_for('static', filename='index2.html') }}" target ="_blank" style="text-decoration: none; color: #0077b6; font-weight: bold;">
+            Click here to learn more! 🚀
+          </a>
+        </p>
+      </div>
+      
+      </div>
+      
+    </section>
+
+    <section id="contact" class="section left">
+      <div class="section-div">
+        <h1 class="section-heading">📩 Get in Touch – We're Here to Help!</h1>
+  <p class="section-text">
+    Have questions about <strong>CryptGuard</strong> or need assistance?  
+    Whether you have <strong>inquiries, feedback, or suggestions</strong>,  
+    we’d love to hear from you! Our team is dedicated to ensuring a smooth experience.
+  </p>
+  <p class="section-text">
+    <strong>📧 Email Us:</strong>  
+    <a href="mailto:support@cryptguard.com" style="color: #0077b6; text-decoration: none;">
+      support@cryptguard.com
+    </a>
+  </p>
+        <p class="section-text">
+          We strive to respond as quickly as possible. Don't hesitate to reach out—we’d love to hear from you!
+        </p>
+      </div>
+      
+    </section>
+
+    <section id="contact" class="right footer">
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-about">
+            <h3 class="footer-subtitles">CryptGuard</h3>
+            <p>
+              Detecting fraudulent Bitcoin transactions with AI-driven
+              precision.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h3 class="footer-subtitles">Quick Links</h3>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#working">Working</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-subtitles">Contact Us</h3>
+            <p>Email: support@cryptguard.com</p>
+            <p>Phone: +1 234 567 890</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 CryptGuard. All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Prediction Modal -->
+    <div id="predictionModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <!-- Close Button -->
+        <h2>Enter Bitcoin Address</h2>
+        <form id="addressForm">
+          <input
+            type="text"
+            id="addressInput"
+            placeholder="Enter address"
+            required
+          />
+          <button type="submit">Predict</button>
+        </form>
+        <div id="predictionResult">
+          <!-- Prediction results will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Cube Container (Always Persistent) -->
+    <div class="cube-container"></div>
+  </body>
+</html>

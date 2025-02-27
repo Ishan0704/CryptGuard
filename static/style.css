@@ -1,0 +1,503 @@
+/* Light Mode Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+    scroll-behavior: smooth;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+
+/* Cube Container */
+.cube-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    perspective: 800px;
+    z-index: -1; /* Keeps cubes in background */
+}
+
+/* 3D Cube */
+.cube {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform-style: preserve-3d;
+    animation: rotateCube 6s infinite linear;
+}
+
+/* Cube Faces */
+.cube div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db; /* Light Mode Border (Blue) */
+    background: transparent;
+}
+
+/* Dark Mode Border */
+.dark-mode .cube div {
+    border-color: #f39c12; /* Dark Mode Border (Orange) */
+}
+
+/* Positioning the Faces */
+.cube .front  { transform: translateZ(10px); }
+.cube .back   { transform: rotateY(180deg) translateZ(10px); }
+.cube .left   { transform: rotateY(-90deg) translateZ(10px); }
+.cube .right  { transform: rotateY(90deg) translateZ(10px); }
+.cube .top    { transform: rotateX(90deg) translateZ(10px); }
+.cube .bottom { transform: rotateX(-90deg) translateZ(10px); }
+
+/* Cube Rotation */
+@keyframes rotateCube {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    50% { transform: rotateX(180deg) rotateY(180deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Blinking Cursor */
+@keyframes blinkCursor {
+    50% { border-right: 2px solid currentColor; }
+}
+
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+/* Dark Mode Support */
+.dark-mode .modal-content{
+    color: #032943
+}
+
+.wide-modal .modal-content {
+    width: 60%; /* Adjust width */
+    max-width: 700px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0077b6;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+tr:hover td {
+    background-color: #dff6ff;
+    transition: 0.3s;
+}
+
+/* Adding rounded corners to the first and last row */
+tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Button Styling */
+.prediction-btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.prediction-btn:hover {
+    background-color: #2980b9;
+}
+
+#addressInput {
+    padding: 8px;
+    width: 80%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000; /* Color of the close button */
+    transition: color 0.3s;
+}
+
+/* Hover effect for the close button */
+.close:hover {
+    color: #f39c12; /* Color on hover */
+}
+
+
+/* Dark Mode Support */
+.dark-mode #typing-text {
+    color: #bfbebd; /* Dark Mode (white) */
+}
+/* Container for text + icon */
+.typing-container {
+    display: flex;
+    align-items: baseline; /* Aligns text and icon properly */
+    gap: 15px; /* Space between text and icon */
+}
+
+/* Typing Text */
+#typing-text {
+    font-size: 3.6rem; /* Bigger text */
+    font-weight: 900; /* Extra bold */
+    font-family: "Courier New", monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    color: #032943;
+    margin-top: 10%;
+}
+
+/* Rocket Icon */
+.typing-container i {
+    font-size: 3.6rem; /* Matches text size */
+    color: #3498db; /* Adjust as needed */
+    position: relative;
+    top: 5px; /* Adjust this value to align perfectly */
+}
+
+.dark-mode .typing-container i {
+    color: #f39c12; /* Golden yellow for dark mode */
+}
+
+/* Section Styling */
+.section {
+    width: 90%;  /* Ensures section is properly aligned */
+    margin-left: 0%;  /* Aligns section with the typing text */
+    padding-left: 5%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start; /* Aligns all content to the left */
+    flex-direction: column; /* Ensures content stacks properly */
+    justify-content: center; /* Centers content vertically */
+    text-align: left; /* Ensures text is aligned to the left */
+    /* background-color: #f5f5f5; */
+}
+
+.section-div{
+    background-color: #f5f5f5;
+}
+.dark-mode .section-div{
+    background-color: #121212;
+}
+
+
+/* Ensure paragraphs, heading, and button are left-aligned */
+.section h2,
+.section p,
+.section button {
+    text-align: left;
+    align-self: flex-start; /* Forces button to be left-aligned */
+}
+
+
+.left {
+    /* background: #0077b6; */
+    color: black;
+    width: 50%;
+    float: left;
+}
+
+.right {
+    /* background: #f4f4f4; */
+    color: black;
+    width: 50%;
+    float: right;
+}
+
+.dark-mode .left, .dark-mode .right {
+    color: #bfbebd;
+}
+
+
+/* Navbar Styling */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Ensures everything is aligned in one line */
+    justify-content: flex-end; /* Moves all items to the right */
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center; /* Centers elements vertically */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Hover effect with top border */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    transition: background 0.3s;
+}
+
+/* Light mode hover effect */
+nav ul li a:hover::after {
+    background: #0077b6;
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+    padding: 10px 15px;
+    border: none;
+    background: #333;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#themeToggle:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+/* Dark Mode */
+.dark-mode body {
+    background: #121212;
+    color: white;
+}
+
+.dark-mode #themeToggle {
+    background: white;
+    color: black;
+}
+
+/* Dark mode hover effect */
+.dark-mode nav ul li a:hover::after {
+    background: #f39c12;
+}
+
+/* Section Heading */
+.section-heading {
+    font-size: 2rem; /* Makes the heading bold and large */
+    font-weight: 700;
+    color: #032943; /* Adjust color for better visibility */
+}
+
+/* Paragraph Text */
+.section-text {
+    font-size: 1.2rem; /* Increases readability */
+    line-height: 1.4; /* Adds spacing for clarity */
+    color: #444; /* Slightly darker for better contrast */
+    margin-bottom: 2%;
+}
+
+/* Prediction Button */
+.prediction-btn {
+    font-size: 1rem; /* Makes button text more prominent */
+    padding: 12px 24px; /* Increases button size */
+    font-weight: bold;
+    background-color: #0077b6; /* Vibrant color for better visibility */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.prediction-btn:hover {
+    background-color: #005a8d; /* Darker shade on hover */
+}
+
+.dark-mode .section-heading,.dark-mode .section-text{
+    color: #bfbebd; /* Golden yellow for dark mode */
+}
+
+#contact.footer {
+    width: 100% ;
+    display: block;
+    /* background-color: #121212; */
+}
+/* Footer Styling */
+.footer {
+    background: #333; /* Changed to match paragraph color */
+    color: #bfbebd; /* Dark text for contrast */
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    font-family: Arial, sans-serif;
+}
+.dark-mode .footer{
+    background-color: #121212;
+}
+
+/* Footer container styling */
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer sections */
+.footer-container div {
+    flex: 1;
+    margin: 10px;
+    min-width: 250px;
+}
+
+/* Footer Headings */
+.footer h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: whitesmoke;/* Darker text for contrast */
+}
+
+/* Footer Text */
+.footer p, 
+.footer li, 
+.footer a {
+    font-size: 1rem;
+    color: #bfbebd; /* Darker text for better visibility */
+    line-height: 1.5;
+}
+
+/* Footer Links */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #bfbebd; /* Darker link color */
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #f8b400; /* Highlight on hover */
+    transform: scale(1.05);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #9d9c9ba8;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    color: #333; /* Darker text */
+}
