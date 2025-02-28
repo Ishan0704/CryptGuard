@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Receiver Address</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Receiver's Bitcoin Address</h2>
+        <form id="receiverForm">
+            <input type="text" id="receiverAddress" placeholder="Enter receiver's address" required>
+            <button type="submit">Check</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("receiverForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const receiverAddress = document.getElementById("receiverAddress").value;
+            if (receiverAddress.trim() !== "") {
+                sessionStorage.setItem("showModal", "true"); // Set flag to show modal
+                window.location.href = "/?receiver=" + encodeURIComponent(receiverAddress);
+            }
+        });
+    </script>
+</body>
+</html>

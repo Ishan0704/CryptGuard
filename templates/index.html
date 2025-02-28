@@ -15,6 +15,24 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
   </head>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const receiverAddress = urlParams.get("receiver");
+
+        if (receiverAddress) {
+            document.getElementById("addressInput").value = receiverAddress;
+            
+            // Check if the modal should be shown (redirected from receiver_check.html)
+            if (sessionStorage.getItem("showModal") === "true") {
+                sessionStorage.removeItem("showModal"); // Prevent re-showing on reload
+                document.getElementById("predictionModal").style.display = "block";
+            }
+        }
+    });
+  </script>
+
   <body>
     <nav>
       <ul>
@@ -52,6 +70,9 @@
         </p>
         <!-- Prediction Button -->
         <button id="predictionButton" class="prediction-btn">Check Now</button>
+
+        <h2 class="section-text">Check from external website?</h2>
+        <button onclick="window.open('/receiver_check', '_blank')" id="predictionButton" class="prediction-btn">Click here</button>
       </div>
     </section>
 
@@ -76,9 +97,6 @@
           </a>
         </p>
       </div>
-      
-      </div>
-      
     </section>
 
     <section id="contact" class="section left">
@@ -136,7 +154,6 @@
     <div id="predictionModal" class="modal">
       <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
-        <!-- Close Button -->
         <h2>Enter Bitcoin Address</h2>
         <form id="addressForm">
           <input
@@ -147,13 +164,11 @@
           />
           <button type="submit">Predict</button>
         </form>
-        <div id="predictionResult">
-          <!-- Prediction results will be displayed here -->
-        </div>
+        <div id="predictionResult"></div>
       </div>
     </div>
 
-    <!-- 3D Cube Container (Always Persistent) -->
+    <!-- 3D Cube Container -->
     <div class="cube-container"></div>
   </body>
 </html>

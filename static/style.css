@@ -274,8 +274,8 @@ button[type="submit"] {
 .section h2,
 .section p,
 .section button {
-    text-align: left;
     align-self: flex-start; /* Forces button to be left-aligned */
+    text-align: justify;
 }
 
 
@@ -284,6 +284,8 @@ button[type="submit"] {
     color: black;
     width: 50%;
     float: left;
+    padding-right: 2%;
+    
 }
 
 .right {
@@ -291,6 +293,7 @@ button[type="submit"] {
     color: black;
     width: 50%;
     float: right;
+    padding-right: 2%;
 }
 
 .dark-mode .left, .dark-mode .right {

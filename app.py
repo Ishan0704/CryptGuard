@@ -16,10 +16,14 @@ file_links = {
     "scaler": "1Uk_qd5_q9uTiIoIic56xKzKPakd2JmEb"
 }
 
-# Function to download files
+# Function to download files only if they don't exist
 def download_file(file_id, output_path):
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, output_path, quiet=False)
+    if not os.path.exists(output_path):  # Check if file already exists
+        print(f"Downloading {output_path}...")
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, output_path, quiet=False)
+    else:
+        print(f"{output_path} already exists, skipping download.")
 
 # Download and load the dataset
 csv_path = "MongoDB_data.csv"
@@ -75,6 +79,11 @@ def index():
         })
 
     return render_template("index.html")
+
+# Route for receiver_check.html
+@app.route("/receiver_check")
+def receiver_check():
+    return render_template("receiver_check.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
