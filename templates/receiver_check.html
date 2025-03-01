@@ -22,12 +22,9 @@
                 document.getElementById("receiverResult").innerHTML = `<p>Last result: ${lastResult}</p>`;
             }
     
-            // Check if there's a prediction alert and show it
-            const predictionAlert = sessionStorage.getItem("predictionAlert");
-            if (predictionAlert) {
-                alert(predictionAlert); // Show alert
-                sessionStorage.removeItem("predictionAlert"); // Clear after showing
-            }
+            // Remove redirection flag without showing an alert
+            sessionStorage.removeItem("fromReceiverPage");
+            sessionStorage.removeItem("predictionAlert"); // Ensure no alert appears
         });
     
         document.getElementById("receiverForm").addEventListener("submit", function(event) {
@@ -36,10 +33,14 @@
     
             if (receiverAddress.trim() !== "") {
                 sessionStorage.setItem("showModal", "true");
-                window.open("/?receiver=" + encodeURIComponent(receiverAddress), "_blank");
+                sessionStorage.setItem("fromReceiverPage", "true"); // Mark redirection
+                window.location.href = "/?receiver=" + encodeURIComponent(receiverAddress);
+
             }
         });
     </script>
+    
+    
     
 </body>
 </html>

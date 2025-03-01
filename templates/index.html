@@ -206,6 +206,12 @@
                   }, 500);
               }
           }
+  
+          // Handle redirection-specific modal closing
+          if (sessionStorage.getItem("fromReceiverPage") === "true") {
+              sessionStorage.removeItem("fromReceiverPage");
+              sessionStorage.setItem("modalShouldClose", "true");
+          }
       });
   
       document.getElementById("addressForm").addEventListener("submit", function(event) {
@@ -217,8 +223,18 @@
               .then(data => {
                   document.getElementById("predictionResult").innerHTML = `<p>Result: ${data.result}</p>`;
                   sessionStorage.setItem("lastResult", data.result);
-                  sessionStorage.setItem("predictionAlert", data.result); // Store for receiver_check.html
+                  sessionStorage.setItem("predictionAlert", data.result);
               });
+      });
+  
+      document.getElementById("closeModal").addEventListener("click", function () {
+          document.getElementById("predictionModal").style.display = "none";
+  
+          if (sessionStorage.getItem("modalShouldClose") === "true") {
+              sessionStorage.removeItem("modalShouldClose");
+              sessionStorage.setItem("predictionAlert", sessionStorage.getItem("lastResult") || "No result available");
+              window.location.href = "/receiver_check";
+          }
       });
   
       window.onload = function () {
