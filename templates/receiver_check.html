@@ -16,14 +16,30 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lastResult = sessionStorage.getItem("lastResult");
+            if (lastResult) {
+                document.getElementById("receiverResult").innerHTML = `<p>Last result: ${lastResult}</p>`;
+            }
+    
+            // Check if there's a prediction alert and show it
+            const predictionAlert = sessionStorage.getItem("predictionAlert");
+            if (predictionAlert) {
+                alert(predictionAlert); // Show alert
+                sessionStorage.removeItem("predictionAlert"); // Clear after showing
+            }
+        });
+    
         document.getElementById("receiverForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const receiverAddress = document.getElementById("receiverAddress").value;
+    
             if (receiverAddress.trim() !== "") {
-                sessionStorage.setItem("showModal", "true"); // Set flag to show modal
-                window.location.href = "/?receiver=" + encodeURIComponent(receiverAddress);
+                sessionStorage.setItem("showModal", "true");
+                window.open("/?receiver=" + encodeURIComponent(receiverAddress), "_blank");
             }
         });
     </script>
+    
 </body>
 </html>

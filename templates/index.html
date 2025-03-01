@@ -16,23 +16,6 @@
     />
   </head>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const receiverAddress = urlParams.get("receiver");
-
-        if (receiverAddress) {
-            document.getElementById("addressInput").value = receiverAddress;
-            
-            // Check if the modal should be shown (redirected from receiver_check.html)
-            if (sessionStorage.getItem("showModal") === "true") {
-                sessionStorage.removeItem("showModal"); // Prevent re-showing on reload
-                document.getElementById("predictionModal").style.display = "block";
-            }
-        }
-    });
-  </script>
-
   <body>
     <nav>
       <ul>
@@ -63,16 +46,37 @@
           through a majority voting mechanism, ensuring reliable and data-driven
           fraud detection.
         </p>
-        <h2 class="section-text">Ready to put CryptGuard to the test?</h2>
-        <p class="section-text">
-          Hit 'Check Now' to see our AI in action—uncover fraud in just a few
-          clicks!
-        </p>
-        <!-- Prediction Button -->
-        <button id="predictionButton" class="prediction-btn">Check Now</button>
 
-        <h2 class="section-text">Check from external website?</h2>
-        <button onclick="window.open('/receiver_check', '_blank')" id="predictionButton" class="prediction-btn">Click here</button>
+        <!-- Prediction Button -->
+        <div class="predict-buttons" style="display: flex; gap: 2%">
+          <div style="padding-right: 2%">
+            <h2 class="section-text">Ready to put CryptGuard to the test?</h2>
+            <p class="section-text">
+              Hit <strong><i>Check Now</i></strong> to see our AI in
+              action—uncover fraud in just a few clicks!
+            </p>
+            <button id="predictionButton" class="prediction-btn">
+              Check Now
+            </button>
+          </div>
+
+          <div>
+            <h2 class="section-text">
+              Check CryptGuard from an external site?
+            </h2>
+            <p class="section-text">
+              Simply hit <strong><i>Click Here</i></strong
+              >, and CryptGuard will analyze it instantly for potential fraud!
+            </p>
+            <button
+              onclick="window.open('/receiver_check', '_blank')"
+              id="predictionButton"
+              class="prediction-btn"
+            >
+              Click here
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -80,19 +84,29 @@
       <div class="section-div">
         <h1 class="section-heading">🔍 How Does CryptGuard Work?</h1>
         <p class="section-text">
-          Ever wondered how CryptGuard detects fraudulent Bitcoin transactions?  
-          It’s all about <strong>AI-powered precision</strong>! Simply enter a Bitcoin address, and CryptGuard 
-          will extract <strong>key transaction features</strong> from our dataset.  
+          Ever wondered how CryptGuard detects fraudulent Bitcoin transactions?
+          It’s all about <strong>AI-powered precision</strong>! Simply enter a
+          Bitcoin address, and CryptGuard will extract
+          <strong>key transaction features</strong> from our dataset.
         </p>
         <p class="section-text">
-          These values are then <strong>standardized</strong> and analyzed by three powerful machine learning models:  
-          <strong>Decision Tree Classifier, Random Forest Classifier, and LightGBM</strong>.  
-          Each model independently predicts whether the transaction is <strong>legitimate or fraudulent</strong>,  
-          and the final verdict is decided through <strong>majority voting</strong>, ensuring the most reliable results.
+          These values are then <strong>standardized</strong> and analyzed by
+          three powerful machine learning models:
+          <strong
+            >Decision Tree Classifier, Random Forest Classifier, and
+            LightGBM</strong
+          >. Each model independently predicts whether the transaction is
+          <strong>legitimate or fraudulent</strong>, and the final verdict is
+          decided through <strong>majority voting</strong>, ensuring the most
+          reliable results.
         </p>
         <p class="section-text">
-          Want to dive deeper with examples?  
-          <a href="{{ url_for('static', filename='index2.html') }}" target ="_blank" style="text-decoration: none; color: #0077b6; font-weight: bold;">
+          Want to dive deeper with examples?
+          <a
+            href="{{ url_for('static', filename='index2.html') }}"
+            target="_blank"
+            style="text-decoration: none; color: #0077b6; font-weight: bold"
+          >
             Click here to learn more! 🚀
           </a>
         </p>
@@ -102,22 +116,26 @@
     <section id="contact" class="section left">
       <div class="section-div">
         <h1 class="section-heading">📩 Get in Touch – We're Here to Help!</h1>
-  <p class="section-text">
-    Have questions about <strong>CryptGuard</strong> or need assistance?  
-    Whether you have <strong>inquiries, feedback, or suggestions</strong>,  
-    we’d love to hear from you! Our team is dedicated to ensuring a smooth experience.
-  </p>
-  <p class="section-text">
-    <strong>📧 Email Us:</strong>  
-    <a href="mailto:support@cryptguard.com" style="color: #0077b6; text-decoration: none;">
-      support@cryptguard.com
-    </a>
-  </p>
         <p class="section-text">
-          We strive to respond as quickly as possible. Don't hesitate to reach out—we’d love to hear from you!
+          Have questions about <strong>CryptGuard</strong> or need assistance?
+          Whether you have <strong>inquiries, feedback, or suggestions</strong>,
+          we’d love to hear from you! Our team is dedicated to ensuring a smooth
+          experience.
+        </p>
+        <p class="section-text">
+          <strong>📧 Email Us:</strong>
+          <a
+            href="mailto:support@cryptguard.com"
+            style="color: #0077b6; text-decoration: none"
+          >
+            support@cryptguard.com
+          </a>
+        </p>
+        <p class="section-text">
+          We strive to respond as quickly as possible. Don't hesitate to reach
+          out—we’d love to hear from you!
         </p>
       </div>
-      
     </section>
 
     <section id="contact" class="right footer">
@@ -170,5 +188,47 @@
 
     <!-- 3D Cube Container -->
     <div class="cube-container"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          const receiverAddress = urlParams.get("receiver");
+  
+          if (receiverAddress) {
+              document.getElementById("addressInput").value = receiverAddress;
+  
+              if (sessionStorage.getItem("showModal") === "true") {
+                  sessionStorage.removeItem("showModal");
+                  document.getElementById("predictionModal").style.display = "block";
+  
+                  setTimeout(() => {
+                      document.getElementById("addressForm").dispatchEvent(new Event("submit"));
+                  }, 500);
+              }
+          }
+      });
+  
+      document.getElementById("addressForm").addEventListener("submit", function(event) {
+          event.preventDefault();
+          const address = document.getElementById("addressInput").value;
+  
+          fetch("/predict?address=" + encodeURIComponent(address))
+              .then(response => response.json())
+              .then(data => {
+                  document.getElementById("predictionResult").innerHTML = `<p>Result: ${data.result}</p>`;
+                  sessionStorage.setItem("lastResult", data.result);
+                  sessionStorage.setItem("predictionAlert", data.result); // Store for receiver_check.html
+              });
+      });
+  
+      window.onload = function () {
+          const lastResult = sessionStorage.getItem("lastResult");
+          if (lastResult) {
+              document.getElementById("predictionResult").innerHTML = `<p>Last result: ${lastResult}</p>`;
+          }
+      };
+  </script>
+  
+
   </body>
 </html>
